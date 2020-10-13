@@ -54,7 +54,7 @@ domain.yml
 endpoints.yml
 actions.py
 ```
-Le rôle de chacun de ces fichiers sera explicité plus tard.
+Le rôle de chacun de ces fichiers est clairement précisé dans la documentation et sera explicité plus tard.
 
 Une fois un bot minimal créé il est possible de lancer RASA-X :
 ```bash
@@ -69,6 +69,12 @@ Si tout va bien (lire les infos sur le terminal pour le vérifier), une page web
 > Attention : le login se fait automatiquement au démarrage. En cas de besoin ultérieur, les identifiants générés automatiquement se retrouvent sour la commande rasa. Par exemple, 3ème ligne ci-dessous :
 
 ![Identifiants](Screenshot_2.png)
+
+Lors de cette première ouverture les fichiers présents dans le répertoire sont utilisés pour initier le chatbot. La première étape va être d'entraîner un premier modèle, même sans faire de modifications ou d'ajouts. Le bouton "Train" permet ca.
+
+> Attention : l'entraînement implique la création d'un modèle (en réalité il peut même être composé de plusieurs (sous-)modèles : pour les intents, les stories...). Ensuite il faudra indiquer comme "Actif" ce modèle pour qu'il soit utilisé par le chatbot lors des interactions de test.
+
+> Attention (suite) : après chaque itératon d'entraînement un nouveau modèle est créé et doit être rendu "Actif", sinon on reste sur le précédent !
 
 ## Tâche : consultation d'un EdT
 
@@ -167,7 +173,9 @@ Un chatbot illustrant cette capacité est donné dans le répertoire [connexion_
 Les opérations sont :
  1. Installation du gestionnaire de base de données souhaité en local (```pip3 install sqlite3```)
  2. Création d'une base dédiée au bot, avec identifiants (ou pas)
- 3. Edition de `actions.py` pour adapter l'action de finalisation, en intégrant les opérations de la base de données (dans [db_sqlite.py](db_sqlite.py) ici)
+ 3. Edition de `actions.py` pour adapter l'action de finalisation, en intégrant les opérations de la base de données (dans [db_sqlite.py](connexion_db/travel_agency_bot/db_sqlite.py) ici)
+ 
+Une version plus intégrée à RASA de connexion BD existe depuis peu : les Knowledge Bases. Un tutorial est disponible sur [https://github.com/RasaHQ/tutorial-knowledge-base](https://github.com/RasaHQ/tutorial-knowledge-base). Cela permet en définitive les mêmes capcités que l'accès par les `actions` mais en simpifiant la manipulation des slots lors du dialogue. Toutefois l'approche est récente et proposée actuellement en test dans RASA, laisson-lui le temps de faire ses preuves !
 
 ### Option :speaker: : entrées vocales avec UI
 
