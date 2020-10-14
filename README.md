@@ -18,9 +18,9 @@ RASA c'est RASA qui en parle le mieux :
 
 [![Page d'accueil RASA](Screenshot_3.png)](https://rasa.com)
 
-La documention est assez complète, et très pédagogique. Elle sera à découvrir au fur et à mesure du déroulement du défi.
+La documentation est assez complète, et très pédagogique. Elle sera à découvrir au fur et à mesure du déroulement du défi.
 
-> Attention : à la gestion du temps, on peut vite passer beaucoup de temps à la lecture de la doc. Il faut bien cibler ses besoins et se limiter à ce qui est nécessaire à la réalisation du défi. l'application sera une occasion d'aller plus avant dansles concepts.
+> Attention : à la gestion du temps, on peut vite passer beaucoup de temps à la lecture de la doc. Il faut bien cibler ses besoins et se limiter à ce qui est nécessaire à la réalisation du défi. l'application sera une occasion d'aller plus avant dans les concepts.
 
 On distinguera notamment bien les nuances entre :
 - RASA Open Source, la base de la distribution qui comprend tous les composants pour développer un chatbot
@@ -67,8 +67,8 @@ Si tout va bien (lire les infos sur le terminal pour le vérifier), une page web
 [//]: # (> Attention : votre page n'aura pas de conversations au démarrage. L'affichage précédent)
 
 > Attention : le login se fait automatiquement au démarrage. En cas de besoin ultérieur, les identifiants générés automatiquement se retrouvent sour la commande rasa. Par exemple, 3ème ligne ci-dessous :
-
-![Identifiants](Screenshot_2.png)
+> ![Identifiants](Screenshot_2.png)
+> Si besoin, voir la documentation pour définir votre propre mot de passe.
 
 Lors de cette première ouverture les fichiers présents dans le répertoire sont utilisés pour initier le chatbot. La première étape va être d'entraîner un premier modèle, même sans faire de modifications ou d'ajouts. Le bouton "Train" permet ca.
 
@@ -190,5 +190,7 @@ Nous utiliserons cette dernière solution ici afin de développer conjointement 
 Dans le cadre de l'application le même principe sera utlisé pour connecter un robot Pepper à votre bot en passant d'abord par l'API Google Cloud pour obtenir la transcription des entrées vocales de l'utlisateur. Il sera alors possible de converser avec le robot et de collecter les dialogues réalisés pour ensuite procéder à une analyse des données. L'objectif sera lors d'obtenir une stratégie de dialogue optimale l'aide d'un algorithme d'apprentissage par renforcement (par exemple un DQN, Deep Q-Network, basé sur des réseaux de neurones profonds), implémenté avec la librairie TensorFlow/Keras. Mais ca c'est une autre histoire...
 
 ![Pepper accueil](Screenshot_5.png)
+
+> Last update: en cas de poursuite du distanciel durant le semestre, le problème sera l'accès aux robots et donc l'application pourra bien sur être développée seulement sous forme d'interface graphique (type UI Web).
 
 &copy; Fabrice Lefèvre, 2020
