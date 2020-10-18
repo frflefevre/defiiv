@@ -119,9 +119,14 @@ Voici les fichiers à modifier :
 - `endpoints.yml` 
 - `actions.py`
 
-
 Des exemples de chatbot sont donnés dans le répertoire [examples]. Ils sont testables facilement et rapidement avec ```rasa shell``` et leurs fichiers permettent de découvrir plusieurs type d'organisation de chatbot, fonction de la tâche.
 
+> **Aide :** les fichiers dans [emploi_du_temps](emploi_du_temps) (nlu.md, stories.md, actions.py, domain.yml, endpoints.yml) intégrent les définitions permettant au chatbot de gérer des demandes portant sur un emploi du temps. Pour l'instant l'action retourne toujours la même réponse (elle sera complétée avec l'accès en DB, ci-après). Tous les fichiers doivent être rapatriés et `nlu.md`et `stories.md` doivent être copiés dans le répertoire `data`. Ensuite, avant de relancer rasa-x, il faut lancer un apprentissage puis démarrer le serveur d'actions :
+> ```bash
+> rasa train
+> rasa run actions &
+> rasa x
+> ```
 
 ## Développement du bot 0.2
 
@@ -160,7 +165,7 @@ L'addresse communiquée permettra à vos collègues d'accéder à votre bot pour
 
 ## Développement du bot 1.etc
 
-Une fois le bot stabilisé dans un bon fonctionnement, deux options sont proposées pour la poursuite du défi :
+Une fois le bot stabilisé dans un bon fonctionnement, deux options sont proposées pour la poursuite de l'atelier :
 - la connexion à une base de données
 - l'ajout d'une interface pour entrées vocales
 
@@ -176,6 +181,11 @@ Les opérations sont :
  3. Edition de `actions.py` pour adapter l'action de finalisation, en intégrant les opérations de la base de données (dans [db_sqlite.py](connexion_db/travel_agency_bot/db_sqlite.py) ici)
  
 Une version plus intégrée à RASA de connexion BD existe depuis peu : les Knowledge Bases. Un tutorial est disponible sur [https://github.com/RasaHQ/tutorial-knowledge-base](https://github.com/RasaHQ/tutorial-knowledge-base). Cela permet en définitive les mêmes capcités que l'accès par les `actions` mais en simpifiant la manipulation des slots lors du dialogue. Toutefois l'approche est récente et proposée actuellement en test dans RASA, laisson-lui le temps de faire ses preuves !
+
+> **Aide :** dans `connexion_db` le fichier [db_sqlite.py](connexion_db/db_sqlite.py) donne une exemple de fichier permettant de créer une DB, d'instancier quelques enregistrements d'exemples puis de fournir la fonction d'accées depuis le fichier [actions.py](connexion_db/actions.py). Les deux fichiers doivent être rapatriés dans le répertoire principal du chatbot, puis db_sqlite.py exécuté. Ensuite, avant de relancer rasa-x, il faut re-démarrer le serveur d'actions :
+> ```bash
+> rasa run actions &
+> ```
 
 ### Option :speaker: : entrées vocales avec UI
 
