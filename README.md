@@ -5,12 +5,7 @@
 
 Ce défi constitue une introduction au monde des interactions vocales humain-machine. Ce domaine complexe suppose d'enchaîner de nombreux traitements automatiques afin de reproduire (du moins en apparence) les capacités communicationelles des humains. Quelques heures sont donc une goutte d'eau pour appréhender ce vaste champ de recherche et de développement. Malgré tout le recours à un outil complet doit permettre de se donner un aperçu haut-niveau des implications de la mise en oeuvre d'une plateforme conversationnelle.
 
-
-Nombreuses possibilités commerciales :
-
-Quelques propositions libres (du moins open-source, l'usage peut être limitée dans certains cas, notamment commerciaux) :
-
-Nous retiendrons la solution [RASA](https://rasa.com).
+Nous retiendrons la solution [RASA](https://rasa.com) pour le défi.
 
 ## Presentation de RASA
 
@@ -18,26 +13,33 @@ RASA c'est RASA qui en parle le mieux :
 
 [![Page d'accueil RASA](Screenshot_3.png)](https://rasa.com)
 
-La documentation est assez complète, et très pédagogique. Elle sera à découvrir au fur et à mesure du déroulement du défi.
+La [documentation](https://rasa.com/docs/) est assez complète, et très pédagogique. Elle sera à découvrir au fur et à mesure du déroulement du défi.
 
 > Attention : à la gestion du temps, on peut vite passer beaucoup de temps à la lecture de la doc. Il faut bien cibler ses besoins et se limiter à ce qui est nécessaire à la réalisation du défi. l'application sera une occasion d'aller plus avant dans les concepts.
 
 On distinguera notamment bien les nuances entre :
 - RASA Open Source, la base de la distribution qui comprend tous les composants pour développer un chatbot
+- RASA Action Server, SDK permettant de définir ses propres actions (en python par exemple) appelés par le chatbot
 - RASA-X, plateforme web offrant des outils pour assurer la mise au point d'un chatbot RASA
-	- Intègre sa propre version de RASA
-	- Attention : la dernière version de RASA OS est 2.0.x alors que la version utilisée avec RASA-X est toujours 1.x
+	- Intègre sa propre version de RASA Open Source et RASA Action Server
+
+> Attention : la dernière version de RASA Open Source est 2.0.x alors que la version utilisée avec RASA-X est toujours 1.x. Penser à lire la bonne documentation (il y a des changements non négligeables entre les 2 version) en réglant en bas à gauche ou en allant directement sur [https://legacy-docs-v1.rasa.com/](https://legacy-docs-v1.rasa.com/).
+
+> Attention : bien qu'intégré dans RASA-X, le serveur d'actions doit être explicitement démarré pour fonctionner avec RASA-X (cf ci-dessous).
+
 	
-Avant l'installation locale il est possible de découvrir RASA sur le site au travers [une page playground](https://rasa.com/docs/rasa/playground) permettant de déveloper très rapidement un chatbot élémentaire. 
+Avant l'installation il est possible de découvrir RASA sur le site au travers [une page playground](https://rasa.com/docs/rasa/playground) permettant de déveloper très rapidement un chatbot élémentaire. 
 
 ## Installation locale de RASA-X
 
-RASA-X devrait être pré-installé sur les machines, afin de nous faire gagner du temps et éviter de surcharger les profils intinérants :
+RASA-X est pré-installé sur les machines, afin de nous faire gagner du temps et éviter de surcharger les profils itinérants :
 ```bash
   mkdir monProjetRasax
   source /usr/local/stow/rasax/bin/activate
 ```
 Toutefois une procédure d'[installation locale simple](https://rasa.com/docs/rasa-x/installation-and-setup/install/local-mode) est disponible sur le site de RASA. On notera ensuite dans la documentation que les moyens d'élargir facilement le fonctionnement de l'outil sur des serveurs dans le cloud sont prévus.
+
+> Attention : ne pas faire d'installation sur une machine perso durant l'atelier. Cela prend trop de temps et vous éloigne du sujet. Il sera tout à fait possible de le faire ensuite, notamment pour ceux voulant poursuivre avec l'application !
   
 ## Initialisation et lancement RASA-X
 
@@ -102,13 +104,13 @@ Pour information dans la partie application un robot d'accueil complet sera dév
 	- consultation météo
 	- blagues
 
-Il s'agira donc de compléter le chabot initié dans le défi puis de le connecter à un robot Pepper pour pouvoir ensuite le tester et enfin utliser des réseaux de neurones pour optimiser son comportement automatiquement. Mais on en reparle plus tard, pour l'instant il faut lancer la version de base du bot...
+Il s'agira donc de compléter le chabot initié durant cet atelier puis de le connecter à un robot Pepper pour pouvoir ensuite le tester et enfin utliser des réseaux de neurones pour optimiser son comportement automatiquement. Mais on en reparle plus tard, pour l'instant il faut lancer la version de base du bot...
 
 ## Développement du bot 0.1
 
 Dans la première version du bot, l'utilisateur pourra accéder à son emploi du temps en indiquant uniquement la formation et le groupe recherchés. 
 
-Pour l'instant l'action de finalisation de la tâche se limitera à afficher les informations recoltées jusque là, puis à enchaîner sur une nouvelle reqête ou les salutations finales. L'interaction avec une BD sera étudiée plus tard dans le défi.
+Pour l'instant l'action de finalisation de la tâche se limitera à afficher les informations recoltées jusque là, puis à enchaîner sur une nouvelle reqête ou les salutations finales. L'interaction avec une BD sera étudiée plus tard dans l'atelier.
 
 Pour cette première version du bot, les définitions seront mises directement dans les fichiers. Bien sur le recours a RASA-X directement est possible, mais cela permet de mieux comprendre les choses dans un premier temps.
 
@@ -178,7 +180,7 @@ Un chatbot illustrant cette capacité est donné dans le répertoire [connexion_
 Les opérations sont :
  1. Installation du gestionnaire de base de données souhaité en local (```pip3 install sqlite3```)
  2. Création d'une base dédiée au bot, avec identifiants (ou pas)
- 3. Edition de `actions.py` pour adapter l'action de finalisation, en intégrant les opérations de la base de données (dans [db_sqlite.py](connexion_db/travel_agency_bot/db_sqlite.py) ici)
+ 3. Edition de `actions.py` pour adapter l'action de finalisation, en intégrant les opérations de la base de données (par exemple comme dans l'exemple dans [travel_agency_bot](connexion_db/travel_agency_bot), mais voir aussi l'aide ci-dessous)
  
 Une version plus intégrée à RASA de connexion BD existe depuis peu : les Knowledge Bases. Un tutorial est disponible sur [https://github.com/RasaHQ/tutorial-knowledge-base](https://github.com/RasaHQ/tutorial-knowledge-base). Cela permet en définitive les mêmes capcités que l'accès par les `actions` mais en simpifiant la manipulation des slots lors du dialogue. Toutefois l'approche est récente et proposée actuellement en test dans RASA, laisson-lui le temps de faire ses preuves !
 
@@ -193,7 +195,7 @@ Si les échanges de texte sont déjà une fonctionalité avantageuse pour les hu
 
 Bien sur les enjeux liés au développement d'une telle technologie, éminement complexe, sont encore très importants. Toutefois des solutions "clés en main" existent déjà permettant d'éviter toute la difficulté pratique à son déploiement. Ainsi Google offre des accès gratuits à sa solution STT (Speech-to-Text) sur le Cloud (moyennant une limitation mensuel des appels à l'API) ou directement au travers de son navigateur Chrome (sans limitation).
 
-Install Chrome ici :point_right: [![Procédure d'installation de Chrome](google-chrome_00.png)](https://doc.ubuntu-fr.org/google_chrome)
+Install Chrome ici :point_right: [![Procédure d'installation de Chrome](google-chrome_00.png)](https://doc.ubuntu-fr.org/google_chrome) ou intaller Chromium à partir de "Ubuntu Software" (la valise dans le menu de gauche)
 
 Nous utiliserons cette dernière solution ici afin de développer conjointement l'interface vocale et son GUI dans le contexte bien maîtrisé d'HTML/JS. Un exemple de page utilisant la Web Speech API de Google est donné dans le répertoire [entrees_vocales](entrees_vocales), complétée par un affichage type "chatbot" `chatroom`. Pour l'utiliser, il faut seulement ajuster la ligne 15 qui indique l'url du serveur RASA visé.
 
@@ -201,6 +203,6 @@ Dans le cadre de l'application le même principe sera utlisé pour connecter un 
 
 ![Pepper accueil](Screenshot_5.png)
 
-> Last update: en cas de poursuite du distanciel durant le semestre, le problème sera l'accès aux robots et donc l'application pourra bien sur être développée seulement sous forme d'interface graphique (type UI Web).
+> Last update: en cas de poursuite du distanciel durant le semestre, le problème sera l'accès aux robots et donc l'application pourra bien sur être développée seulement sous forme d'interface graphique (type UI Web). Mais il est vraisemblable que les séances d'application aient le status de TP spécifique et que nous soyons autorisés à les faire en présentiel.
 
 &copy; Fabrice Lefèvre, 2020
