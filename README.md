@@ -34,7 +34,7 @@ Avant l'installation il est possible de découvrir RASA sur le site au travers [
 
 RASA-X est pré-installé sur les machines, afin de nous faire gagner du temps et éviter de surcharger les profils itinérants :
 ```bash
-  mkdir monProjetRasax
+  mkdir ~/monProjetRasax
   source /usr/local/stow/rasax/bin/activate
 ```
 Toutefois une procédure d'[installation locale simple](https://rasa.com/docs/rasa-x/installation-and-setup/install/local-mode) est disponible sur le site de RASA. On notera ensuite dans la documentation que les moyens d'élargir facilement le fonctionnement de l'outil sur des serveurs dans le cloud sont prévus.
@@ -138,10 +138,10 @@ rasa visualize
 ```
 
 A partir de la version initiale 0.1 il s'agit maintenant d'augmenter la qualité du bot. Pour cela on peut affiner l'écriture des éléments faits au 0.1 mais il est bien plus simple de procéder directement en utilisant le bot. Ainsi vous pouvez :
-1 Vérifier le comportement attendu du bot: s'assurer que les intents et stories prévues fonctionnent comme attendu
-2 Ajouter des variantes à l'aide l'interface : utiliser les fonctions d'annotations en ligne permettant de corriger les prédictions du modèle actuel pour lui permettre de distinguer de nouveaux cas
-3 Ré-entraîner le modèle
-4 Retour au 1
+1. Vérifier le comportement attendu du bot: s'assurer que les intents et stories prévues fonctionnent comme attendu
+2. Ajouter des variantes à l'aide de l'interface : utiliser les fonctions d'annotations en ligne permettant de corriger les prédictions du modèle actuel pour lui permettre de distinguer de nouveaux cas
+3. Ré-entraîner le modèle
+4. Retour au 1
 
 ## Développement du bot 0.3
 
