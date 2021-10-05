@@ -36,6 +36,8 @@ RASA-X est pré-installé sur les machines de TP, afin de nous faire gagner du t
   mkdir ~/monProjetRasax
   source /usr/local/stow/rasax/bin/activate
 ```
+> **Attention :** sur les machines de TP en salle, bien créer le dossier du projet sur le répertoire de montage. Rasa X a du mal avec les autres diques montés en réseau.
+
 Toutefois une procédure d'[installation locale simple](https://rasa.com/docs/rasa-x/installation-and-setup/install/local-mode) est disponible sur le site de RASA. On notera ensuite dans la documentation que les moyens d'élargir facilement le fonctionnement de l'outil sur des serveurs dans le cloud sont prévus.
 
 > **Attention :** ne pas faire d'installation sur une machine perso durant l'atelier. Cela prend trop de temps et vous éloigne du sujet. Il sera tout à fait possible de le faire ensuite, notamment pour ceux voulant poursuivre le défi en faisant l'application !
