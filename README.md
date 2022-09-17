@@ -1,11 +1,11 @@
 # defiiv
-# Défi Interactions Vocales
+# Atelier pour le Défi Interactions Vocales
 
 ![Université d'Avignon](Avignon.png)
 
-Ce défi constitue une introduction au monde des interactions vocales humain-machine. Ce domaine complexe suppose d'enchaîner de nombreux traitements automatiques afin de reproduire (du moins en apparence) les capacités de communication des humains. Quelques heures sont donc une goutte d'eau pour appréhender ce vaste champ de recherche et de développement. Malgré tout le recours à un outil complet facilement opérationnel doit permettre de se donner un aperçu haut-niveau des implications de la mise en oeuvre d'une plateforme conversationnelle.
+Ce défi constitue une introduction au monde des interactions vocales humain-machine. Ce domaine complexe suppose d'enchaîner de nombreux traitements automatiques afin de reproduire (du moins en apparence) les capacités de communication des humains. Quelques heures sont donc une goutte d'eau pour appréhender ce vaste champ de recherche et de développement. Malgré tout le recours à un outil complet facilement opérationnel doit permettre de se donner un aperçu haut-niveau des enjeux de la mise en oeuvre d'une plateforme conversationnelle.
 
-Nous retiendrons la solution [RASA](https://rasa.com) pour le défi.
+Nous retiendrons la solution open-source [RASA](https://rasa.com) pour le défi.
 
 ## Presentation de RASA
 
@@ -15,15 +15,17 @@ RASA c'est RASA qui en parle le mieux :
 
 La [documentation](https://rasa.com/docs/) est assez complète, et très pédagogique. Elle sera à découvrir au fur et à mesure du déroulement du défi.
 
-> **Attention :** à la gestion du temps, on peut vite passer beaucoup de temps à la lecture de la doc. Il faut bien cibler ses besoins et se limiter à ce qui est nécessaire à la réalisation du défi. l'application sera une occasion d'aller plus avant dans les concepts.
+> **Attention :** à la gestion du temps, on peut vite passer beaucoup de temps à la lecture de la doc. Il faut bien cibler ses besoins et se limiter à ce qui est nécessaire à la réalisation du défi. L'application sera ensuite une occasion d'aller plus avant dans les concepts de la plateforme.
 
 On distinguera notamment bien les nuances entre :
 - RASA Open Source, la base de la distribution qui comprend tous les composants pour développer un chatbot
-- RASA Action Server, SDK permettant de définir ses propres actions (en python par exemple) appelées par le chatbot
+- RASA Action Server, SDK permettant de définir ses propres actions (en python par exemple), appelées par le chatbot
 - RASA-X, plateforme web offrant des outils pour assurer la mise au point d'un chatbot RASA
 	- Intègre sa propre version de RASA Open Source et RASA Action Server
 
-> **Attention :** la dernière version de RASA Open Source est 2.0.x alors que la version utilisée avec RASA-X est toujours 1.x. Penser à lire la bonne documentation (il y a des changements non négligeables entre les 2 version) en réglant le sélecteur en bas à gauche ou en allant directement sur [https://legacy-docs-v1.rasa.com/](https://legacy-docs-v1.rasa.com/).
+> **Attention :** RASA-X vient de passer RASA Enterprise (et donc payant). RASA-X est toujours accessible sur [https://legacy-docs-rasa-x.rasa.com/docs/rasa-x/](https://legacy-docs-rasa-x.rasa.com/docs/rasa-x/)
+
+> **Attention :** la dernière version de RASA Open Source est 3.0.x alors que la version utilisée avec RASA-X est toujours 1.x. Penser à lire la bonne documentation (il y a des changements non négligeables entre les 2 version) en réglant le sélecteur en bas à gauche ou en allant directement sur [https://legacy-docs-v1.rasa.com/](https://legacy-docs-v1.rasa.com/).
 
 > **Attention :** bien qu'intégré dans RASA-X, le serveur d'actions doit être explicitement démarré pour fonctionner avec RASA-X (cf ci-dessous).
 
@@ -36,7 +38,7 @@ RASA-X est pré-installé sur les machines de TP, afin de nous faire gagner du t
   mkdir ~/monProjetRasax
   source /usr/local/stow/rasax/bin/activate
 ```
-> **Attention :** sur les machines de TP en salle, bien créer le dossier du projet sur le répertoire de montage. Rasa X a du mal avec les autres diques montés en réseau.
+> **Attention :** sur les machines de TP en salle, il faut bien créer le dossier du projet dans votre répertoire de montage. Rasa X a du mal avec les autres disques montés en réseau.
 
 Toutefois une procédure d'[installation locale simple](https://rasa.com/docs/rasa-x/installation-and-setup/install/local-mode) est disponible sur le site de RASA. On notera ensuite dans la documentation que les moyens d'élargir facilement le fonctionnement de l'outil sur des serveurs dans le cloud sont prévus.
 
@@ -111,7 +113,7 @@ Il s'agira donc de compléter le chabot initié durant cet atelier puis de le co
 
 Dans la première version du bot, l'utilisateur pourra accéder à son emploi du temps en indiquant uniquement la formation et le groupe recherchés. 
 
-Pour l'instant l'action de finalisation de la tâche se limitera à afficher les informations recoltées jusque là, puis à enchaîner sur une nouvelle reqête ou les salutations finales. L'interaction avec une BD sera étudiée plus tard dans l'atelier.
+Pour l'instant l'action de finalisation de la tâche se limitera à afficher les informations recoltées jusque là dans le dialogue, puis à enchaîner sur une nouvelle reqête ou les salutations finales. L'interaction avec une BD sera étudiée plus tard dans l'atelier.
 
 Pour cette première version du bot, les définitions seront mises directement dans les fichiers. Bien sur le recours a RASA-X directement est possible, mais cela permet de mieux comprendre les choses dans un premier temps.
 
@@ -122,7 +124,7 @@ Voici les fichiers à modifier :
 - `endpoints.yml` 
 - `actions.py`
 
-Des exemples de chatbot sont donnés dans le répertoire [examples]. Ils sont testables facilement et rapidement avec ```rasa shell``` et leurs fichiers permettent de découvrir plusieurs type d'organisation de chatbot, fonction de la tâche.
+Des exemples de chatbot sont donnés dans le répertoire [examples]. Ils sont testables facilement et rapidement avec ```rasa shell``` et leurs fichiers permettent de découvrir plusieurs type d'organisation de chatbot, en fonction de la tâche visée.
 
 > **Aide :** les fichiers dans [emploi_du_temps](emploi_du_temps) (nlu.md, stories.md, actions.py, domain.yml, endpoints.yml) intégrent les définitions permettant au chatbot de gérer des demandes portant sur un emploi du temps. Pour l'instant l'action retourne toujours la même réponse (elle sera complétée avec l'accès en DB, ci-après). Tous les fichiers doivent être rapatriés. Et `nlu.md`et `stories.md` doivent être copiés dans le répertoire `data`. Ensuite, avant de relancer rasa-x, il faut lancer un apprentissage puis démarrer le serveur d'actions :
 > ```bash
@@ -138,13 +140,13 @@ On peut afficher une 'compilation' des stories en les sélectionnant (Ctrl) puis
 rasa visualize
 ```
 
-A partir de la version initiale 0.1 il s'agit maintenant d'augmenter la qualité du bot. Pour cela on peut affiner l'écriture des éléments faits au 0.1 mais il est bien plus simple de procéder directement en utilisant le bot. Ainsi vous pouvez :
+A partir de la version initiale 0.1 il s'agit maintenant d'augmenter la qualité du bot. Pour cela on peut affiner l'écriture des éléments faite au 0.1 mais il est bien plus simple de procéder directement en utilisant le bot. Ainsi vous pouvez :
 1. Vérifier le comportement attendu du bot : s'assurer que les intents et stories prévus fonctionnent comme attendu
 2. Ajouter des variantes à l'aide de l'interface : utiliser les fonctions d'annotations en ligne permettant de corriger les prédictions du modèle actuel pour lui permettre de distinguer de nouveaux cas
 3. Ré-entraîner le modèle
 4. Retour au 1
 
-## Développement du bot 0.3
+## Développement du bot 0.3 (optionnel)
 
 La version prédécente étant stabilisée le bot est augmenté pour pouvoir tenir compte de la date et l'heure dans la demande de l'utilisateur.
 
@@ -158,13 +160,13 @@ Le bot pourrait aussi proposer une blague ou une info intéressante...
 
 ## Développement du bot 1.0
 
-Une fois la mise au point 'interne' jugée suffisante (d'ailleurs selon quels critères ?), il est possible de faire tester son bot par d'autres utlisateurs. En allant dans la page "Conversations", il est possible de générer un lien à partir de l'icone "Share" qui ouvre le menu suivant :
+Une fois la mise au point 'interne' jugée suffisante (d'ailleurs selon quels critères ?), il est possible de faire tester son bot par d'autres utilisateurs. En allant dans la page "Conversations", il est possible de générer un lien à partir de l'icone "Share" qui ouvre le menu suivant :
 
 ![Invitation](Screenshot_4.png)
 
-L'addresse communiquée permettra à vos collègues d'accéder à votre bot pour le tester et il sera possible de tracer les conversations faîtes par ces derniers pour les contrôler ensuite avant de les prendre en compte dans un nouvel apprentissage.
+L'adresse communiquée permettra à vos collègues d'accéder à votre bot pour le tester et il sera possible de tracer les conversations faîtes par ces derniers pour les contrôler/annoter ensuite avant de les prendre en compte dans un nouvel apprentissage.
 
-> **Attention :** le lien fournit peut-être basé sur l'addresse locale de votre machine (localhost). Il faut la remplacer par sa vraie IP (à récuperer dans la configuration réseau).
+> **Attention :** le lien fourni peut être basé sur l'adresse locale de votre machine (localhost). Il faut la remplacer par sa vraie IP (à récuperer dans la configuration réseau).
 
 ## Développement du bot 1.etc
 
@@ -174,7 +176,7 @@ Une fois le bot stabilisé dans un bon fonctionnement, deux options sont propos�
 
 ### Option :floppy_disk: : connexion base de données
 
-Pour cette option il va s'agir de permettre au bot de rechercher les informations voulues par l'utilisateur dans une base de données. Pour cela n'importe quelle base de données disposant d'une librairie python fera l'affaire. Par exemple SQLite3, MangoDB...
+Pour cette option il va s'agir de permettre au bot de rechercher les informations voulues par l'utilisateur dans une base de données. Pour cela n'importe quelle gestionnaire de base de données disposant d'une librairie python fera l'affaire. Par exemple SQLite3, MangoDB...
 
 Un chatbot illustrant cette capacité est donné dans le répertoire [connexion_db](connexion_db). 
 
@@ -198,7 +200,7 @@ Bien sur les enjeux liés au développement d'une telle technologie, éminement 
 
 Install Chrome ici :point_right: [![Procédure d'installation de Chrome](google-chrome_00.png)](https://doc.ubuntu-fr.org/google_chrome) ou intaller Chromium à partir de "Ubuntu Software" (la valise dans le menu de gauche)
 
-Nous utiliserons cette dernière solution ici afin de développer conjointement l'interface vocale et son GUI dans le contexte bien maîtrisé d'HTML/JS. Un exemple de page utilisant la Web Speech API de Google est donné dans le répertoire [entrees_vocales](entrees_vocales), complété par un affichage type "chatbot" `chatroom`. Pour l'utiliser, il faut seulement ajuster la ligne 15 qui indique l'url du serveur RASA visé à votre cas.
+Nous utiliserons cette dernière solution ici afin de développer conjointement l'interface vocale et son GUI dans le contexte bien maîtrisé d'HTML/JS. Un exemple de page utilisant la Web Speech API de Google est donné dans le répertoire [entrees_vocales](entrees_vocales), complété par un affichage type "chatbot" `chatroom`. Pour l'utiliser, il faut seulement ajuster la ligne 15 qui indique l'url du serveur RASA visé dans votre cas (indiquée après le lancement du serveur en ligne de commande).
 
 Dans le cadre de l'application le même principe sera utlisé pour connecter un robot Pepper à votre bot en passant d'abord par l'API Google Cloud pour obtenir la transcription des entrées vocales de l'utlisateur. Il sera alors possible de converser avec le robot et de collecter les dialogues réalisés pour ensuite procéder à une analyse des données. L'objectif sera lors d'obtenir une stratégie de dialogue optimale l'aide d'un algorithme d'apprentissage par renforcement (par exemple un DQN, Deep Q-Network, basé sur des réseaux de neurones profonds), implémenté avec la librairie TensorFlow/Keras. Mais ca c'est une autre histoire...
 
@@ -206,4 +208,4 @@ Dans le cadre de l'application le même principe sera utlisé pour connecter un 
 
 > Last update: en cas de passage en distanciel durant le semestre, le problème sera l'accès aux robots et donc l'application pourra bien sur être développée seulement sous forme d'interface graphique (type UI Web). Mais il sera demandé que les séances d'application aient le status de TP spécifique et que nous soyons autorisés à les faire en présentiel.
 
-&copy; Fabrice Lefèvre, 2021
+&copy; Fabrice Lefèvre, 2022
