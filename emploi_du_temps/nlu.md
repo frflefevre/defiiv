@@ -78,5 +78,5 @@
 - [alternant](group)
 - my group is [classique](group)
 - i'm in group [classique](group)
-- group [classique](section)
-- [classique](section)
+- group [classique](group)
+- [classique](group)
