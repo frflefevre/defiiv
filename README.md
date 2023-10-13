@@ -71,7 +71,7 @@ Si tout va bien (lire les infos sur le terminal pour le vérifier), une page web
 
 [//]: # (> Attention : votre page n'aura pas de conversations au démarrage. L'affichage précédent)
 
-> **Attention :** le login se fait automatiquement au démarrage. En cas de besoin ultérieur, les identifiants générés automatiquement se retrouvent sour la commande rasa. Par exemple, 4ème ligne ci-dessous :
+> **Attention :** le login se fait automatiquement au démarrage. En cas de besoin ultérieur, les identifiants générés automatiquement se retrouvent sour la commande rasa. Par exemple, 4ème ligne de l'image ci-dessous.
 > Si besoin, voir la documentation pour définir votre propre mot de passe.
 
 ![Identifiants](Screenshot_2.png)
@@ -127,7 +127,7 @@ Voici les fichiers à modifier :
 
 Des exemples de chatbot sont donnés dans le répertoire [examples]. Ils sont testables facilement et rapidement avec ```rasa shell``` et leurs fichiers permettent de découvrir plusieurs type d'organisation de chatbot, en fonction de la tâche visée.
 
-> **Aide :** les fichiers dans [emploi_du_temps](emploi_du_temps) (nlu.md, stories.md, actions.py, domain.yml, endpoints.yml) intégrent les définitions permettant au chatbot de gérer des demandes portant sur un emploi du temps. Pour l'instant l'action retourne toujours la même réponse (elle sera complétée avec l'accès en DB, ci-après). Tous les fichiers doivent être rapatriés. Et `nlu.md`et `stories.md` doivent être copiés dans le répertoire `data`. Ensuite, avant de relancer rasa-x, il faut lancer un apprentissage puis démarrer le serveur d'actions :
+> **Aide :** les fichiers dans [emploi_du_temps](emploi_du_temps/nlu.md) (nlu.md, stories.md, actions.py, domain.yml, endpoints.yml) intégrent les définitions permettant au chatbot de gérer des demandes portant sur un emploi du temps. Pour l'instant l'action retourne toujours la même réponse (elle sera complétée avec l'accès en DB, ci-après). Tous les fichiers doivent être rapatriés. Et `nlu.md`et `stories.md` doivent être copiés dans le répertoire `data`. Ensuite, avant de relancer rasa-x, il faut lancer un apprentissage puis démarrer le serveur d'actions :
 > ```bash
 > rasa train
 > rasa run actions &
