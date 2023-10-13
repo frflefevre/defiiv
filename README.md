@@ -71,8 +71,10 @@ Si tout va bien (lire les infos sur le terminal pour le vérifier), une page web
 
 [//]: # (> Attention : votre page n'aura pas de conversations au démarrage. L'affichage précédent)
 
-> **Attention :** le login se fait automatiquement au démarrage. En cas de besoin ultérieur, les identifiants générés automatiquement se retrouvent sour la commande rasa. Par exemple, 4ème ligne ci-dessous : ![Identifiants](Screenshot_2.png)
+> **Attention :** le login se fait automatiquement au démarrage. En cas de besoin ultérieur, les identifiants générés automatiquement se retrouvent sour la commande rasa. Par exemple, 4ème ligne ci-dessous :
 > Si besoin, voir la documentation pour définir votre propre mot de passe.
+
+![Identifiants](Screenshot_2.png)
 
 Lors de cette première ouverture, les fichiers présents dans le répertoire sont utilisés pour initier le chatbot. La première étape va être d'entraîner un premier modèle, même sans faire de modifications ou d'ajouts. Le bouton "Train" permet ca.
 
