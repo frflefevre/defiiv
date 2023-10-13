@@ -179,12 +179,12 @@ Une fois le bot stabilisé dans un bon fonctionnement, deux options sont propos�
 
 Pour cette option il va s'agir de permettre au bot de rechercher les informations voulues par l'utilisateur dans une base de données. Pour cela n'importe quelle gestionnaire de base de données disposant d'une librairie python fera l'affaire. Par exemple SQLite3, MangoDB...
 
-Un chatbot illustrant cette capacité est donné dans le répertoire [connexion_db](connexion_db). 
+Un chatbot illustrant cette capacité est donné dans le répertoire [connexion_db](connexion_db/). 
 
 Les opérations sont :
  1. Installation du gestionnaire de base de données souhaité en local (```pip3 install sqlite3```)
  2. Création d'une base dédiée au bot, avec identifiants (ou pas)
- 3. Edition de `actions.py` pour adapter l'action de finalisation, en intégrant les opérations de la base de données (par exemple comme dans l'exemple dans [travel_agency_bot](connexion_db/travel_agency_bot), mais voir aussi l'aide ci-dessous)
+ 3. Edition de `actions.py` pour adapter l'action de finalisation, en intégrant les opérations de la base de données (par exemple comme dans l'exemple dans [travel_agency_bot](connexion_db/travel_agency_bot/), mais voir aussi l'aide ci-dessous)
  
 Une version plus intégrée à RASA de connexion BD existe depuis peu : les Knowledge Bases. Un tutorial est disponible sur [https://github.com/RasaHQ/tutorial-knowledge-base](https://github.com/RasaHQ/tutorial-knowledge-base). Cela permet en définitive les mêmes capcités que l'accès par les `actions` mais en simpifiant la manipulation des slots lors du dialogue. Toutefois l'approche est récente et proposée actuellement en test dans RASA, laisson-lui le temps de faire ses preuves !
 
@@ -201,7 +201,7 @@ Bien sur les enjeux liés au développement d'une telle technologie, éminement 
 
 Install Chrome ici :point_right: [![Procédure d'installation de Chrome](google-chrome_00.png)](https://doc.ubuntu-fr.org/google_chrome) ou intaller Chromium à partir de "Ubuntu Software" (la valise dans le menu de gauche)
 
-Nous utiliserons cette dernière solution ici afin de développer conjointement l'interface vocale et son GUI dans le contexte bien maîtrisé d'HTML/JS. Un exemple de page utilisant la Web Speech API de Google est donné dans le répertoire [entrees_vocales](entrees_vocales), complété par un affichage type "chatbot" `chatroom`. Pour l'utiliser, il faut seulement ajuster la ligne 15 qui indique l'url du serveur RASA visé dans votre cas (indiquée après le lancement du serveur en ligne de commande).
+Nous utiliserons cette dernière solution ici afin de développer conjointement l'interface vocale et son GUI dans le contexte bien maîtrisé d'HTML/JS. Un exemple de page utilisant la Web Speech API de Google est donné dans le répertoire [entrees_vocales/](entrees_vocales), complété par un affichage type "chatbot" `chatroom`. Pour l'utiliser, il faut seulement ajuster la ligne 15 qui indique l'url du serveur RASA visé dans votre cas (indiquée après le lancement du serveur en ligne de commande).
 
 Dans le cadre de l'application le même principe sera utlisé pour connecter un robot Pepper à votre bot en passant d'abord par l'API Google Cloud pour obtenir la transcription des entrées vocales de l'utlisateur. Il sera alors possible de converser avec le robot et de collecter les dialogues réalisés pour ensuite procéder à une analyse des données. L'objectif sera lors d'obtenir une stratégie de dialogue optimale l'aide d'un algorithme d'apprentissage par renforcement (par exemple un DQN, Deep Q-Network, basé sur des réseaux de neurones profonds), implémenté avec la librairie TensorFlow/Keras. Mais ca c'est une autre histoire...
 
@@ -209,4 +209,4 @@ Dans le cadre de l'application le même principe sera utlisé pour connecter un 
 
 > Last update: en cas de passage en distanciel durant le semestre, le problème sera l'accès aux robots et donc l'application pourra bien sur être développée seulement sous forme d'interface graphique (type UI Web). Mais il sera demandé que les séances d'application aient le status de TP spécifique et que nous soyons autorisés à les faire en présentiel.
 
-&copy; Fabrice Lefèvre, 2022
+&copy; Fabrice Lefèvre, 2023
